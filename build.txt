@@ -1,2 +1,0 @@
-qiskit-qrng-aio
-qiskit-ibmq-check
