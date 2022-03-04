@@ -1,0 +1,82 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: https://gw.qcloud.dev
+functions:
+  ### Qiskit ###
+  # Qiskit HTTP - using of-watchdog
+  qiskit-qrng:
+    lang: qiskit
+    handler: ./qiskit-qrng
+    image: quantumdev/qiskit-qrng:latest
+
+  # Quantum random number generator
+  qiskit-qrng-flask:
+    lang: qiskit-flask
+    handler: ./qiskit-qrng-flask
+    image: quantumdev/qiskit-qrng-flask:latest
+  
+  # QRNG run on IBM Quantum computer
+  qiskit-qrng-ibmq:
+    lang: qiskit
+    handler: ./qiskit-qrng-ibmq
+    image: quantumdev/qiskit-qrng-ibmq:latest
+    environment:
+      read_timeout: "300s"
+      write_timeout: "300s"
+      exec_timeout: "300s"
+    secrets:
+    - ibm-token-hoamb
+  
+  # Shor Algorithm
+  qiskit-shor:
+    lang: qiskit
+    handler: ./qiskit-shor
+    image: quantumdev/qiskit-shor:latest
+
+  ### Cirq ###
+  # Quantum random number generator
+  cirq-qrng:
+    lang: cirq
+    handler: ./cirq-qrng
+    image: quantumdev/cirq-qrng:latest
+
+  ### QSharp ###
+  # Hello world
+  qsharp-hello:
+    lang: qsharp
+    handler: ./qsharp-hello
+    image: quantumdev/qsharp-hello:latest
+
+  qsharp-qrng:
+    lang: qsharp
+    handler: ./qsharp-qrng
+    image: quantumdev/qsharp-qrng:latest
+
+  qiskit-hello:
+    lang: qiskit
+    handler: ./qiskit-hello
+    image: quantumdev/qiskit-hello:latest  
+  
+  qiskit-qrng-aio:
+    lang: qiskit
+    handler: ./qiskit-qrng-aio
+    image: quantumdev/qiskit-qrng-aio:latest
+    environment:
+      read_timeout: "300s"
+      write_timeout: "300s"
+      exec_timeout: "300s"
+    secrets:
+    - ibm-token-hoamb
+
+  qiskit-ibmq-check:
+    lang: qiskit
+    handler: ./qiskit-ibmq-check
+    image: quantumdev/qiskit-ibmq-check:latest
+    environment:
+      read_timeout: "300s"
+      write_timeout: "300s"
+      exec_timeout: "300s"
+    secrets:
+    - ibm-token-hoamb
+
